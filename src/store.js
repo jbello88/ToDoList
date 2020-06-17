@@ -18,9 +18,9 @@ export default class Store {
   }
 
   load() {
-    var json = localStorage.getItem("store");
+    const json = localStorage.getItem("store");
     if (json) {
-      var tmpStore = JSON.parse(json);
+      const tmpStore = JSON.parse(json);
 
       if (tmpStore) {
         this.toDoItems = tmpStore.toDoItems;

@@ -11,7 +11,7 @@ export default class Repo {
   }
 
   getItemById(id) {
-    var filteredList = this.store.toDoItems.filter((x) => x.id === id);
+    let filteredList = this.store.toDoItems.filter((x) => x.id === id);
     if (filteredList.length >= 1) return filteredList[0];
     return null;
   }
