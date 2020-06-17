@@ -1,13 +1,13 @@
-body {
-  margin: 0;
-  padding: 0;
-}
-
 /*         Global           */
 root {
   font-size: 15px;
 
   /*Color scheme*/
+}
+
+body {
+  font-family: sans-serif;
+  background-color: red;
 }
 
 section {
@@ -51,5 +51,7 @@ section {
 }
 
 .hide {
-  visibility: hidden;
+  display: none;
 }
+
+/*         Remove All           */

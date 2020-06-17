@@ -26,20 +26,20 @@ export default class Repo {
   }
 
   deleteItemById(id) {
-    this.store.toDoItems = this.store.toDoItems.filter((x) => x.Id !== id);
+    this.store.toDoItems = this.store.toDoItems.filter((x) => x.id !== id);
     this.store.save();
   }
 
   updateItem(item) {
     this.store.toDoItems = this.store.toDoItems.map((x) =>
-      x.Id !== item.Id ? x : item
+      x.id !== item.id ? x : item
     );
     this.store.save();
   }
 
   markItemAsCompleted(id) {
     this.store.toDoItems = this.store.toDoItems.map((x) =>
-      x.id === id ? { ...x, IsCompleted: true } : x
+      x.id === id ? { ...x, isCompleted: true } : x
     );
     this.store.save();
   }np
