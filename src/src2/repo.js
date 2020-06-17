@@ -10,6 +10,12 @@ export default class Repo {
     return this.store.toDoItems;
   }
 
+  getItemById(id) {
+    var filteredList = this.store.toDoItems.filter((x) => x.id === id);
+    if (filteredList.length >= 1) return filteredList[0];
+    return null;
+  }
+
   getNextId() {
     return this.getNextId;
   }
@@ -32,8 +38,10 @@ export default class Repo {
   }
 
   markItemAsCompleted(id) {
-    // this.store.toDoItems = this.store.toDoItems.map(x => x.Id === id ? {{}, ...x, isCompleted = true} : x)
-    // this.store.save();
+    this.store.toDoItems = this.store.toDoItems.map((x) =>
+      x.id === id ? { ...x, IsCompleted: true } : x
+    );
+    this.store.save();
   }
 
   clearAllItems() {
