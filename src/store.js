@@ -3,8 +3,8 @@ export default class Store {
     this.toDoItems = items;
     this.currentId = 1000;
 
-    if (length.items === 0) {
-      load();
+    if (items.length === 0) {
+      this.load();
     }
   }
 

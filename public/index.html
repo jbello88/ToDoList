@@ -8,15 +8,26 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+  
+  <link type="text/css" rel="stylesheet" href="./style.css" />
 
-
-  <title>Dummy</title>
+  <title>ToDoList</title>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <h1>Dummy Title</h1>
-  <div id="root"></div>
+
+  <div class="title"><h1>ToDoList</h1></div>
+  <form class="ToDo">
+    <section class="newToDo">
+      <input type="text" placeholder="Write your ToDo here" />
+      <input type="submit" value="Add" />
+    </section>
+    <button class="deleteAll" type="button">Delete All</button>
+    <section class="toDos"></section>
+
+    <section class="removeToDos"></section>
+  </form>
 
 </body>
 

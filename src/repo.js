@@ -1,5 +1,5 @@
 import Store from "./store";
-import ToDoItem from "./toDoItem";
+import ToDoItem from "./todoitem";
 
 export default class Repo {
   constructor(store = new Store([])) {
@@ -26,7 +26,7 @@ export default class Repo {
   }
 
   deleteItemById(id) {
-    this.store.toDoItems = this.store.toDoItems.filter((x) => x.Id != id);
+    this.store.toDoItems = this.store.toDoItems.filter((x) => x.Id !== id);
     this.store.save();
   }
 
@@ -42,14 +42,14 @@ export default class Repo {
       x.id === id ? { ...x, IsCompleted: true } : x
     );
     this.store.save();
-  }
-
+  }np
+  
   clearAllItems() {
     this.store.toDoItems = [];
-    this.store.save;
+    this.store.save();
   }
 
   createNewItem() {
-    return new ToDoItem(this.store.getNextId);
+    return new ToDoItem(this.store.getNextId());
   }
 }
