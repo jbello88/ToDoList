@@ -9,11 +9,6 @@ let repo = new Repo();
 let items = repo.getItems();
 console.log(items.length + " items were loaded from storage")
 
-// uncoment the following block to generate new items
-//  let item = repo.createNewItem();
-// item.text = 'This is a test #' + item.id;
-// repo.addItem(item);
-
 
 function getId(element) {
     let ele = element;
@@ -36,13 +31,11 @@ window.onload = function(event) {
   
   window.addEventListener("beforeunload", function() {
     console.log("page gets unloaded");
-    //unfertig - save storage
   });
   
   /*                   Events                               */
   
   document.querySelector(".toDos").addEventListener("click", e => {
-    /*const selectedToDo = e.target.parentElement;*/
     let [id, selectedToDo] = getId(e.target);  
 
     if (e.target.classList.contains("remove")) {
@@ -85,14 +78,10 @@ window.onload = function(event) {
       repo.addItem(newItem);
       addToDo(newItem);
       document.querySelector(".newToDo input[type='text']").value = "";
-      /*document.querySelector(".toDos").lastChild.classList.toggle("done"); ?? Better solution??*/
       e.preventDefault();
     });
   
   function editToDo(id, ToDoItem) {
-    //unfertig - edit item!!
-    //create new // replaceWith
-  
     const inputField = ToDoItem.querySelector("input");
     const toDoText = ToDoItem.querySelector("p");
     const editButton = ToDoItem.querySelector(".edit");
