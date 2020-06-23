@@ -17,18 +17,48 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
 
-  <div class="title"><h1>ToDoList</h1></div>
-  <form class="ToDo">
-    <section class="newToDo">
-      <input type="text" placeholder="Write your ToDo here" />
-      <input type="submit" value="Add" />
-    </section>
-    <button class="deleteAll" type="button">Delete All</button>
-    <section class="toDos"></section>
+  <div class="row h-100">
+    <div class="col-md-4 col-sm-12 h-100">
+      <div class="header">
+        <div class="header-bg"></div>
+        <div class="container h-100">
+          <div class="row h-100">
+            <div class="col-12">
+              <p id="date" class="pl-2 pt-3">Date</p>
+              <div class="header-content my-5 text-center">
+                <h1 class="title">What's up today?</h1>
+              </div>
+              <form class="pt-3 newToDo mr-5">
+                <input type="text" class="form-control my-4 rounded-pill" placeholder="Write your ToDo here">
+                <div class="button-group text-center">
+                  <button class="btn  primary-button mr-3 hvr-ripple-out" type="submit">Add</button>
+                  <button class="btn deleteAll primary-button hvr-ripple-out" type="button">Delete All</button>
+                </form>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-sm-12 py-5 px-5 mh-100">
+      <div class="container container-right overflow-auto h-100">
+        <div class="toDos"></div>
+      </div>
+    </div>
+  </div>
+  
 
-    <section class="removeToDos"></section>
-  </form>
+  
 
+    
+
+    
+  
+
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 
 </html>

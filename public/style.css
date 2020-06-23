@@ -1,45 +1,189 @@
 /*         Global           */
-root {
+:root {
   font-size: 15px;
 
   /*Color scheme*/
+  --background-color: rgba(0, 46, 102, 0.8);
+  --primary-color: #fff;
+  --highlight-color: #f7a494;
 }
 
+html {
+  height: 100%;
+}
+
+
 body {
-  font-family: sans-serif;
+  height: 100%;
+  min-height: 35rem;
+  font-family: 'Source Sans Pro';
+  color: var(--highlight-color); 
+  font-weight: 300;
+  background:url("https://colorfully.eu/wp-content/uploads/2012/07/look-again-best-facebook-cover.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.primary-button{
+  min-width: 8rem;
+  padding: 0.8rem 0.8rem !important;
+  color: var(--higlight-color);
+}
+
+.primary-button:hover {
+  color: var(--primary-color);
+  background-color: var(--highlight-color);
   
 }
 
-section {
-  margin: 3rem 1rem;
+.primary-button:focus, .primary-button.focus {
+  display: none;
+}
+/*         Header          */
+
+
+
+.header {
+  height: 100%;
+  max-width: 30vw;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 0;
+  z-index: 2;
 }
 
-.title {
-  text-align: center;
-  margin-bottom: 3rem;
+.header p {
+  font-size: 1.5rem;
 }
+
+.header .header-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  min-height: 35rem;
+  height: 100%;
+  background-color: var(--background-color);
+  transform: skewX(-8deg);
+  transform-origin: top right; 
+}
+
+.header-content {
+  background: url("./img/header-big.png") no-repeat center;
+  background-size: 80%;
+  padding: 3rem 5rem 0.5rem 3rem;
+}
+
+.header .header-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--background-color);
+}
+
 
 /*         New ToDo           */
 
 .newToDo {
   padding: 1rem;
-  display: inline;
-
-  border: 1px solid gray;
   border-radius: 0.5rem;
 }
 
+.newToDo input {
+  height: auto;
+  font-size: 1rem;
+  padding: 1rem;
+  font-weight: 300 !important;
+  padding: 0.8rem 0.8rem;
+  
+}
+
+.newToDo button {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1rem;
+}
+
+
+@-webkit-keyframes hvr-ripple-out {
+  100% {
+    top: -12px;
+    right: -12px;
+    bottom: -12px;
+    left: -12px;
+    opacity: 0;
+  }
+}
+@keyframes hvr-ripple-out {
+  100% {
+    top: -12px;
+    right: -12px;
+    bottom: -12px;
+    left: -12px;
+    opacity: 0;
+  }
+}
+.hvr-ripple-out {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  border-radius: 2rem;
+}
+.hvr-ripple-out:before {
+  content: '';
+  position: absolute;
+  border: var(--highlight-color) solid 3px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  border-radius: 2rem;
+}
+.hvr-ripple-out:hover:before, .hvr-ripple-out:focus:before, .hvr-ripple-out:active:before {
+  -webkit-animation-name: hvr-ripple-out;
+  animation-name: hvr-ripple-out;
+}
+
+
+/*
+runden Punkt einfügen
+
+-webkit-filter: blur(25px);
+-moz-filter: blur(25px);
+-o-filter: blur(25px);
+-ms-filter: blur(25px);
+filter: blur(25px);
+
+*/
+
+
 /*         ToDo List           */
+
+.container-right{
+  background-color: var(--background-color);
+  border-radius: 3rem;
+  padding: 2rem;
+}
+
 .toDos {
   border: 1px solid gray;
-  min-height: 7rem;
 }
 
 .toDo {
-  border: 1px solid blue;
   margin: 1rem 0;
   display: flex;
   justify-content: space-between;
+  color: var(--primary-color);
+
+  border: 1px solid blue;
 }
 
 .done {
@@ -54,4 +198,25 @@ section {
   display: none;
 }
 
-/*         Remove All           */
+
+/*       Media Queries          */
+
+@media (max-width: 768px) {
+  .header { 
+    padding-bottom: 3rem;
+  }
+  .header .header-bg {
+    transform: skewY(4deg);
+    transform-origin: bottom right;
+  }
+  .header-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .header .header-content h1 {
+    font-size: 1.5rem;
+  }
+  .header .header-content p {
+    font-size: 1.2rem;
+  }
+}
