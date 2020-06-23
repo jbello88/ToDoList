@@ -17,18 +17,29 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
 
-  <div class="title"><h1>ToDoList</h1></div>
-  <form class="ToDo">
-    <section class="newToDo">
-      <input type="text" placeholder="Write your ToDo here" />
-      <input type="submit" value="Add" />
+    <section id="header" class="container-fluid shadow-lg p-5 mb-5 bg-white rounded">
+      <div class="text-center mx-auto">
+        <img src="./img/5a28d537a884c4.5021408015126254636903.png" alt="">
+        <h1 class="title">What's up today?</h1>
+      </div>
     </section>
-    <button class="deleteAll" type="button">Delete All</button>
-    <section class="toDos"></section>
+    <section class="container">
+      <div class="newToDo">
+        <input type="text" placeholder="Write your ToDo here" />
+        <input type="submit" value="Add" />
+      </div>
+      <button class="deleteAll" type="button">Delete All</button>
+    </section>
 
-    <section class="removeToDos"></section>
-  </form>
+    <section class="container">
+      <div class="toDos"></div>
+    </section>
+  
 
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 
 </html>
