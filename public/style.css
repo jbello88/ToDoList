@@ -50,6 +50,34 @@ body {
   padding-bottom: 0;
   z-index: 2;
 }
+/*         Header          */
+
+#header{
+  
+  height: 35vh;
+  width: 100%;
+  padding: 3rem 0;
+  margin: 0;
+  background: url("https://colorfully.eu/wp-content/uploads/2012/07/look-again-best-facebook-cover.jpg") no-repeat center;
+  background-size: cover;
+}
+
+
+#header div{
+  position: absolute;
+  height: 200px;
+  width: 400px;
+  /*background: url("./img/5a28d537a884c4.5021408015126254636903.png") no-repeat center;
+  background-size: 80%;*/
+  justify-content: center;
+}
+
+#header img{
+  position: relative;
+  height: 30%;
+  width: 30%;
+
+}
 
 .header p {
   font-size: 1.5rem;
