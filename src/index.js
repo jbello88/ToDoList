@@ -9,11 +9,6 @@ let repo = new Repo();
 let items = repo.getItems();
 console.log(items.length + " items were loaded from storage")
 
-// uncoment the following block to generate new items
-//  let item = repo.createNewItem();
-// item.text = 'This is a test #' + item.id;
-// repo.addItem(item);
-
 
 function getId(element) {
     let ele = element;
@@ -32,17 +27,32 @@ function getId(element) {
 window.onload = function(event) {
     let items = repo.getItems();
     items.forEach(i => addToDo(i));
+    displayCurrentDate();
   };
   
-  window.addEventListener("beforeunload", function() {
-    console.log("page gets unloaded");
-    //unfertig - save storage
-  });
+
+  function displayCurrentDate() {
+    let now = new Date();
+    let month = formattingDate(now.getUTCMonth() + 1);
+    let day = formattingDate(now.getUTCDate());
+    let dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let dayIdx = now.getDay();  
   
+    document.getElementById("date").innerHTML = `${dayName[dayIdx]}, ${day}.${month}.`;
+  }
+
+  function formattingDate(number) {
+    if (number < 10) {
+      number = "0" + number;
+      return number;
+    }
+    return number;
+  }
+
+
   /*                   Events                               */
   
   document.querySelector(".toDos").addEventListener("click", e => {
-    /*const selectedToDo = e.target.parentElement;*/
     let [id, selectedToDo] = getId(e.target);  
 
     if (e.target.classList.contains("remove")) {
@@ -78,21 +88,17 @@ window.onload = function(event) {
   
   const newToDo = document.querySelector(".newToDo input[type='text']");
   document
-    .querySelector(".newToDo input[type='submit']")
-    .addEventListener("click", function(e) {
+    .querySelector("form")
+    .addEventListener("submit", function(e) {
       let newItem = repo.createNewItem();
       newItem.text = newToDo.value;
       repo.addItem(newItem);
       addToDo(newItem);
       document.querySelector(".newToDo input[type='text']").value = "";
-      /*document.querySelector(".toDos").lastChild.classList.toggle("done"); ?? Better solution??*/
       e.preventDefault();
     });
   
   function editToDo(id, ToDoItem) {
-    //unfertig - edit item!!
-    //create new // replaceWith
-  
     const inputField = ToDoItem.querySelector("input");
     const toDoText = ToDoItem.querySelector("p");
     const editButton = ToDoItem.querySelector(".edit");
