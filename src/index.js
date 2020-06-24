@@ -124,7 +124,7 @@ window.onload = function(event) {
     .querySelector("form")
     .addEventListener("submit", function(e) {
 
-      if(document.querySelector("input [type='text']").value === "") {
+      if(document.querySelector("input[type='text']").value === "") {
           window.alert("The usefulness of a cup is in its emptiness (old chinese proverb). And the usefulness of a todo lies in its text! Please type something in the input field.");
       }
       else {
