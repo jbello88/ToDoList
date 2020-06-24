@@ -20,6 +20,7 @@ body {
   color: var(--highlight-color); 
   font-weight: 300;
   background:url("https://colorfully.eu/wp-content/uploads/2012/07/look-again-best-facebook-cover.jpg") no-repeat center;
+  /*url("http://www.trendycovers.com/covers/sunflower_facebook_cover_1348078288.jpg") */
   background-size: cover;
 }
 
@@ -108,6 +109,22 @@ body {
   font-weight: 700;
   margin: 0;
   color: var(--background-color);
+}
+
+.dropdown-menu{
+  position: absolute;
+  transform: translate3d(110%,50%,0) !important;
+  background-color: var(--highlight-color);
+}
+
+.dropdown-item{
+  color: var(--primary-color);
+}
+
+.dropdown-item:active,
+.dropdown-item:hover{
+  color: var(--primary-color);
+  background-color: var(--background-color);
 }
 
 
