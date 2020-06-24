@@ -64,7 +64,7 @@ window.onload = function(event) {
     } else if (e.target.classList.contains("edit")) {
       editToDo(id, selectedToDo);
     } else if (e.target.classList.contains("check")) {
-        repo.markItemAsCompleted(id);
+      repo.markItemAsCompleted(id);
       selectedToDo.classList.toggle("done");
     }
   
@@ -73,6 +73,35 @@ window.onload = function(event) {
   
   document.querySelector(".deleteAll").addEventListener("click", e => {
     removeToDos();
+  });
+
+
+  document.querySelector(".dropdown-menu").addEventListener("click", e => {
+    let allToDos = document.querySelectorAll(".toDo");
+   
+    if (e.target.classList.contains("all")) {
+        for(let i=0; i<allToDos.length; i++) {
+          allToDos[i].classList.remove("hide");
+        }
+    } else if (e.target.classList.contains("completed")) {
+        for(let i=0; i<allToDos.length; i++) {
+          if(allToDos[i].classList.contains("done")) {
+            allToDos[i].classList.add("hide");
+          }
+          if(!allToDos[i].classList.contains("done") && allToDos[i].classList.contains("hide")) {
+            allToDos[i].classList.remove("hide");
+          }
+        }
+    } else if (e.target.classList.contains("uncompleted")) {
+        for(let i=0; i<allToDos.length; i++) {
+          if(!allToDos[i].classList.contains("done")) {
+            allToDos[i].classList.add("hide");
+          }
+          if(allToDos[i].classList.contains("done") && allToDos[i].classList.contains("hide")) {
+            allToDos[i].classList.remove("hide");
+          }
+        }
+    }
   });
   
   /*                 Functions // Event Handling                            */
@@ -94,11 +123,18 @@ window.onload = function(event) {
   document
     .querySelector("form")
     .addEventListener("submit", function(e) {
-      let newItem = repo.createNewItem();
-      newItem.text = newToDo.value;
-      repo.addItem(newItem);
-      addToDo(newItem);
-      document.querySelector(".newToDo input[type='text']").value = "";
+
+      if(document.querySelector("input [type='text']").value === "") {
+          window.alert("The usefulness of a cup is in its emptiness (old chinese proverb). And the usefulness of a todo lies in its text! Please type something in the input field.");
+      }
+      else {
+        let newItem = repo.createNewItem();
+        newItem.text = newToDo.value;
+        repo.addItem(newItem);
+        addToDo(newItem);
+        document.querySelector(".newToDo input[type='text']").value = "";
+      }
+     
       e.preventDefault();
     });
   
