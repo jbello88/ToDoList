@@ -51,8 +51,12 @@ window.onload = function(event) {
 
 
   /*                   Events                               */
-  
-  document.querySelector(".toDos").addEventListener("click", e => {
+
+  const toDoListDiv = document.querySelector(".toDos");
+
+  toDoListDiv.addEventListener("click", e => {
+    if (toDoListDiv === e.target) return;
+    
     let [id, selectedToDo] = getId(e.target);  
 
     if (e.target.classList.contains("remove")) {
