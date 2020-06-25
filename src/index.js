@@ -20,7 +20,16 @@ function getId(element) {
     } while (ele);
   }
 
-
+  function displayText(boolean) {
+    
+    if (boolean === true) {
+      const text = document.createElement('p');
+      document.querySelector(".toDos").insertAdjacentElement('afterbegin', text);
+      text.innerHTML = "Yeah, nothing to do today";
+    } else {
+      document.querySelector(".toDos p").remove();
+    }
+  } 
 
 /*          At Start & End                              */
 
@@ -28,6 +37,7 @@ function getId(element) {
     let items = repo.getItems();
     items.forEach(i => addToDo(i));
     displayCurrentDate();
+    items.length === -1 ? displayText(true): displayText(false);
   };
 
   window.addEventListener("unload", () => filterToDos("all"));
@@ -63,6 +73,7 @@ function getId(element) {
 
     if (e.target.classList.contains("remove")) {
       removeToDo(id, selectedToDo);
+      if (!e.target.parentElement) displayText(true);
     } else if (e.target.classList.contains("edit")) {
       editToDo(id, selectedToDo);
     } else if (e.target.classList.contains("check")) {
@@ -75,6 +86,7 @@ function getId(element) {
   
   document.querySelector(".deleteAll").addEventListener("click", e => {
     removeToDos();
+    displayText(true);
   });
 
   document.querySelector(".dropdown-menu").addEventListener("click", (e) => filterToDos(e));
@@ -104,6 +116,7 @@ function getId(element) {
           window.alert("The usefulness of a cup is in its emptiness (old chinese proverb). And the usefulness of a todo lies in its text! Please type something in the input field.");
       }
       else {
+        if(document.querySelector(".toDos p")) displayText(false);
         let newItem = repo.createNewItem();
         newItem.text = newToDo.value;
         repo.addItem(newItem);
@@ -137,7 +150,6 @@ function getId(element) {
   }
   
   function removeToDo(id, ToDoItem) {
-      console.log(id);
     repo.deleteItemById(id);
     ToDoItem.remove();
   }
@@ -179,18 +191,6 @@ function getId(element) {
         }
     }
   }
-  
-  /*             wo platzieren?                              */
-  /*
-  if (!document.querySelector(".toDo")) {
-    document.querySelector(
-      ".toDos"
-    ).innerHTML = `<p class="noToDos">"Yeah, nothing to do today"</p>`;
-  } else {
-    document.querySelector(".deleteAll").classList.remove("hide");
-  }*/
-  
-
 
 
 
