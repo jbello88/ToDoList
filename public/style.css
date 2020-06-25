@@ -205,8 +205,8 @@ filter: blur(25px);
 .dropdown{
   font-family: 'Source Sans Pro';
   font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .dropdown-menu{

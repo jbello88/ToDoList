@@ -24,11 +24,13 @@ function getId(element) {
 
 /*          At Start & End                              */
 
-window.onload = function(event) {
+  window.onload = function(event) {
     let items = repo.getItems();
     items.forEach(i => addToDo(i));
     displayCurrentDate();
   };
+
+  window.addEventListener("unload", () => filterToDos("all"));
   
 
   function displayCurrentDate() {
@@ -75,34 +77,8 @@ window.onload = function(event) {
     removeToDos();
   });
 
+  document.querySelector(".dropdown-menu").addEventListener("click", (e) => filterToDos(e));
 
-  document.querySelector(".dropdown-menu").addEventListener("click", e => {
-    let allToDos = document.querySelectorAll(".toDo");
-   
-    if (e.target.classList.contains("all")) {
-        for(let i=0; i<allToDos.length; i++) {
-          allToDos[i].classList.remove("hide");
-        }
-    } else if (e.target.classList.contains("completed")) {
-        for(let i=0; i<allToDos.length; i++) {
-          if(allToDos[i].classList.contains("done")) {
-            allToDos[i].classList.add("hide");
-          }
-          if(!allToDos[i].classList.contains("done") && allToDos[i].classList.contains("hide")) {
-            allToDos[i].classList.remove("hide");
-          }
-        }
-    } else if (e.target.classList.contains("uncompleted")) {
-        for(let i=0; i<allToDos.length; i++) {
-          if(!allToDos[i].classList.contains("done")) {
-            allToDos[i].classList.add("hide");
-          }
-          if(allToDos[i].classList.contains("done") && allToDos[i].classList.contains("hide")) {
-            allToDos[i].classList.remove("hide");
-          }
-        }
-    }
-  });
   
   /*                 Functions // Event Handling                            */
   
@@ -173,6 +149,34 @@ window.onload = function(event) {
       if (typeof toDos[toDo] === "object") {
         toDos[toDo].remove();
       }
+    }
+  }
+
+  function filterToDos(e) {
+    let allToDos = document.querySelectorAll(".toDo");
+    
+    if (e.target.classList.contains("all")) {
+        for(let i=0; i<allToDos.length; i++) {
+          allToDos[i].classList.remove("hide");
+        }
+    } else if (e.target.classList.contains("completed")) {
+        for(let i=0; i<allToDos.length; i++) {
+          if(allToDos[i].classList.contains("done")) {
+            allToDos[i].classList.add("hide");
+          }
+          if(!allToDos[i].classList.contains("done") && allToDos[i].classList.contains("hide")) {
+            allToDos[i].classList.remove("hide");
+          }
+        }
+    } else if (e.target.classList.contains("uncompleted")) {
+        for(let i=0; i<allToDos.length; i++) {
+          if(!allToDos[i].classList.contains("done")) {
+            allToDos[i].classList.add("hide");
+          }
+          if(allToDos[i].classList.contains("done") && allToDos[i].classList.contains("hide")) {
+            allToDos[i].classList.remove("hide");
+          }
+        }
     }
   }
   
