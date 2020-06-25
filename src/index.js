@@ -34,7 +34,7 @@ function getId(element) {
     let items = repo.getItems();
     items.forEach(i => addToDo(i));
     displayCurrentDate();
-    items.length === -1 ? displayText(true): displayText(false);
+    //items.length === -1 ? displayText(true): displayText(false);
   };
 
   window.addEventListener("unload", () => filterToDos("all"));
@@ -57,8 +57,6 @@ function getId(element) {
     }
     return number;
   }
-  return number;
-}
 
 /*                   Events                               */
 
@@ -144,38 +142,6 @@ toDoListDiv.addEventListener("click", e => {
       toDoText.innerHTML = inputField.value;
       toDoText.classList.remove("hide");
     }
-
-  document.querySelector(".toDos").innerHTML += template;
-}
-
-const newToDo = document.querySelector(".newToDo input[type='text']");
-document.querySelector("form").addEventListener("submit", function(e) {
-  let newItem = repo.createNewItem();
-  newItem.text = newToDo.value;
-  repo.addItem(newItem);
-  addToDo(newItem);
-  document.querySelector(".newToDo input[type='text']").value = "";
-  e.preventDefault();
-});
-
-function editToDo(id, ToDoItem) {
-  const inputField = ToDoItem.querySelector("input");
-  const toDoText = ToDoItem.querySelector("p");
-  const editButton = ToDoItem.querySelector(".edit");
-
-  if (editButton.innerHTML === "Edit") {
-    editButton.innerHTML = "Update";
-    toDoText.classList.add("hide");
-    inputField.value = toDoText.innerHTML;
-    inputField.classList.remove("hide");
-  } else {
-    let item = repo.getItemById(id);
-    item.text = inputField.value;
-    repo.updateItem(item);
-    editButton.innerHTML = "Edit";
-    inputField.classList.add("hide");
-    toDoText.innerHTML = inputField.value;
-    toDoText.classList.remove("hide");
   }
   
   function removeToDo(id, ToDoItem) {
@@ -220,4 +186,3 @@ function editToDo(id, ToDoItem) {
         }
     }
   }
-
