@@ -25,13 +25,13 @@
           <div class="row h-100">
             <div class="col-12">
               <p id="date" class="pl-2 pt-3">Date</p>
-              <div class="header-content my-5 text-center">
-                <h1 class="title">What's up today?</h1>
+              <div class="header-content d-flex align-items-center my-5 justify-content-center">
+                <h1 class="text-center title">What's up today?</h1>
               </div>
               <form class="pt-3 newToDo mr-5">
                 <input type="text" class="form-control my-4 rounded-pill" placeholder="Write your ToDo here">
                 <div class="button-group text-center">
-                  <button class="btn  primary-button mr-3 hvr-ripple-out" type="submit">Add</button>
+                  <button class="btn primary-button mr-3 hvr-ripple-out" type="submit">Add</button>
                   <button class="btn deleteAll primary-button hvr-ripple-out" type="button">Delete All</button>
                 </form>
             </div>
@@ -42,6 +42,16 @@
     </div>
     <div class="col-md-8 col-sm-12 py-5 px-5 mh-100">
       <div class="container container-right overflow-auto h-100">
+        <div class="dropdown filter">
+          <button class="btn primary-button dropdown-toggle rounded-pill mb-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filter
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item all" href="#">All</a>
+            <a class="dropdown-item uncompleted" href="#">Uncompleted</a>
+            <a class="dropdown-item completed" href="#">Completed</a>
+          </div>
+        </div>
         <div class="toDos"></div>
       </div>
     </div>

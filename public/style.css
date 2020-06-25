@@ -18,8 +18,8 @@ body {
   font-family: "Source Sans Pro";
   color: var(--highlight-color);
   font-weight: 300;
-  background: url("https://colorfully.eu/wp-content/uploads/2012/07/look-again-best-facebook-cover.jpg")
-    no-repeat center;
+  background:url("https://colorfully.eu/wp-content/uploads/2012/07/look-again-best-facebook-cover.jpg") no-repeat center;
+  /*url("http://www.trendycovers.com/covers/sunflower_facebook_cover_1348078288.jpg") */
   background-size: cover;
 }
 
@@ -96,7 +96,8 @@ body {
 .header-content {
   background: url("./img/header-big.png") no-repeat center;
   background-size: 80%;
-  padding: 3rem 5rem 0.5rem 3rem;
+  padding: 0 4.5rem 0 3.5rem;
+  height: 12rem;
 }
 
 .header .header-content h1 {
@@ -192,6 +193,49 @@ filter: blur(25px);
   background-color: var(--background-color);
   border-radius: 3rem;
   padding: 2rem;
+}
+
+.dropdown{
+  font-family: 'Source Sans Pro';
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.dropdown-menu{
+  position: absolute;
+  transform: translate3d(90%,-20%,0) !important;
+  background-color: var(--highlight-color);
+  border: none;
+  padding: 0;
+}
+
+.dropdown-item {
+  color: var(--primary-color);
+}
+
+.dropdown-item:not(:last-child){
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.dropdown-item:active,
+.dropdown-item:hover{
+  color: var(--primary-color);
+  background-color: var(--background-color);
+}
+
+.dropdown .primary-button{
+  font-family: 'Source Sans Pro';
+  font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  border: var(--highlight-color) solid 4px;
+  padding: 0;
 }
 
 .toDos {
