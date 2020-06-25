@@ -1,14 +1,11 @@
-import Repo from './repo';
-
-
+import Repo from "./repo";
 
 console.log("this is code running");
 
 let repo = new Repo();
 
 let items = repo.getItems();
-console.log(items.length + " items were loaded from storage")
-
+console.log(items.length + " items were loaded from storage");
 
 function getId(element) {
     let ele = element;
@@ -60,17 +57,18 @@ function getId(element) {
     }
     return number;
   }
+  return number;
+}
 
+/*                   Events                               */
 
-  /*                   Events                               */
+const toDoListDiv = document.querySelector(".toDos");
 
-  const toDoListDiv = document.querySelector(".toDos");
+toDoListDiv.addEventListener("click", e => {
+  if (toDoListDiv === e.target) return;
 
-  toDoListDiv.addEventListener("click", e => {
-    if (toDoListDiv === e.target) return;
-    
-    let [id, selectedToDo] = getId(e.target);  
-
+  let [id, selectedToDo] = getId(e.target);
+  
     if (e.target.classList.contains("remove")) {
       removeToDo(id, selectedToDo);
       if (!e.target.parentElement) displayText(true);
@@ -96,14 +94,14 @@ function getId(element) {
   
   function addToDo(newItem) {
     const template = `<div class="toDo ${newItem.isCompleted ? 'done' : ''}" data-id="${newItem.id}">
-        <button class="check">Check</button>
+        <button class="check">✔</button>
         <p>${newItem.text}</p>
         <input class="editField hide" />
-        <date> ${new Date().toLocaleTimeString()} </date>
+        <date> ${new Date().toLocaleDateString()} </date>
         <button class="edit">Edit</button>
-        <button class="remove">Remove</button>
+        <button class="remove">🗑</button>
       </div>`;
-  
+    
     document.querySelector(".toDos").innerHTML += template;
   }
   
@@ -147,6 +145,37 @@ function getId(element) {
       toDoText.classList.remove("hide");
     }
 
+  document.querySelector(".toDos").innerHTML += template;
+}
+
+const newToDo = document.querySelector(".newToDo input[type='text']");
+document.querySelector("form").addEventListener("submit", function(e) {
+  let newItem = repo.createNewItem();
+  newItem.text = newToDo.value;
+  repo.addItem(newItem);
+  addToDo(newItem);
+  document.querySelector(".newToDo input[type='text']").value = "";
+  e.preventDefault();
+});
+
+function editToDo(id, ToDoItem) {
+  const inputField = ToDoItem.querySelector("input");
+  const toDoText = ToDoItem.querySelector("p");
+  const editButton = ToDoItem.querySelector(".edit");
+
+  if (editButton.innerHTML === "Edit") {
+    editButton.innerHTML = "Update";
+    toDoText.classList.add("hide");
+    inputField.value = toDoText.innerHTML;
+    inputField.classList.remove("hide");
+  } else {
+    let item = repo.getItemById(id);
+    item.text = inputField.value;
+    repo.updateItem(item);
+    editButton.innerHTML = "Edit";
+    inputField.classList.add("hide");
+    toDoText.innerHTML = inputField.value;
+    toDoText.classList.remove("hide");
   }
   
   function removeToDo(id, ToDoItem) {
@@ -191,6 +220,4 @@ function getId(element) {
         }
     }
   }
-
-
 
