@@ -166,7 +166,7 @@ toDoListDiv.addEventListener("click", e => {
         for(let i=0; i<allToDos.length; i++) {
           allToDos[i].classList.remove("hide");
         }
-    } else if (e.target.classList.contains("completed")) {
+    } else if (e.target.classList.contains("uncompleted")) {
         for(let i=0; i<allToDos.length; i++) {
           if(allToDos[i].classList.contains("done")) {
             allToDos[i].classList.add("hide");
@@ -175,7 +175,7 @@ toDoListDiv.addEventListener("click", e => {
             allToDos[i].classList.remove("hide");
           }
         }
-    } else if (e.target.classList.contains("uncompleted")) {
+    } else if (e.target.classList.contains("completed")) {
         for(let i=0; i<allToDos.length; i++) {
           if(!allToDos[i].classList.contains("done")) {
             allToDos[i].classList.add("hide");
