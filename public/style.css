@@ -258,6 +258,7 @@ filter: blur(25px);
 
 .toDo p {
   margin: 0;
+  min-width: 200px;
 }
 
 .hide {
@@ -266,7 +267,11 @@ filter: blur(25px);
 
 .editField {
   background-color: transparent;
+  color: white;
+  min-width: 200px;
 }
+  
+
 
 .edit {
   background-color: #f7a494;
@@ -277,7 +282,9 @@ filter: blur(25px);
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
+  width: 100px;
 }
+
 
 .remove {
   background-color: red;
@@ -288,6 +295,7 @@ filter: blur(25px);
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
+
 }
 
 .check {

@@ -1,24 +1,20 @@
 import Repo from "./repo";
 
-console.log("this is code running");
-
 let repo = new Repo();
-
 let items = repo.getItems();
 console.log(items.length + " items were loaded from storage");
 
 function getId(element) {
-    let ele = element;
-    do {
-      if (ele.dataset.id) {
-        return [Number(ele.dataset.id), ele];
-      }
-      ele = ele.parentElement;
-    } while (ele);
-  }
+  let ele = element;
+  do {
+    if (ele.dataset.id) {
+      return [Number(ele.dataset.id), ele];
+    }
+    ele = ele.parentElement;
+  } while (ele);
+}
 
   function displayText(boolean) {
-    
     if (boolean === true) {
       const text = document.createElement('p');
       document.querySelector(".toDos").insertAdjacentElement('afterbegin', text);
@@ -100,7 +96,7 @@ toDoListDiv.addEventListener("click", e => {
         <button class="remove">🗑</button>
       </div>`;
     
-    document.querySelector(".toDos").innerHTML += template;
+      toDoListDiv.innerHTML += template;
   }
   
   const newToDo = document.querySelector(".newToDo input[type='text']");
@@ -108,7 +104,7 @@ toDoListDiv.addEventListener("click", e => {
     .querySelector("form")
     .addEventListener("submit", function(e) {
 
-      if(document.querySelector("input[type='text']").value === "") {
+      if(newToDo.value === "") {
           window.alert("The usefulness of a cup is in its emptiness (old chinese proverb). And the usefulness of a todo lies in its text! Please type something in the input field.");
       }
       else {
@@ -117,7 +113,7 @@ toDoListDiv.addEventListener("click", e => {
         newItem.text = newToDo.value;
         repo.addItem(newItem);
         addToDo(newItem);
-        document.querySelector(".newToDo input[type='text']").value = "";
+        newToDo.value = "";
       }
      
       e.preventDefault();
@@ -134,6 +130,7 @@ toDoListDiv.addEventListener("click", e => {
       inputField.value = toDoText.innerHTML;
       inputField.classList.remove("hide");
     } else {
+      // the user pressed update
       let item = repo.getItemById(id);
       item.text = inputField.value;
       repo.updateItem(item);
@@ -150,19 +147,33 @@ toDoListDiv.addEventListener("click", e => {
   }
   
   function removeToDos() {
-    const toDos = document.querySelectorAll(".toDo");
     repo.clearAllItems();
-    for (let toDo in toDos) {
-      if (typeof toDos[toDo] === "object") {
-        toDos[toDo].remove();
-      }
-    }
+    toDoListDiv.innerHTML = '';
   }
 
   function filterToDos(e) {
-    let allToDos = document.querySelectorAll(".toDo");
-    
-    if (e.target.classList.contains("all")) {
+    //let allToDos = document.querySelectorAll(".toDo");
+    toDoListDiv.innerHTML = '';
+    let items = repo.getItems();
+
+    if (e.target.classList.contains("all")){
+      items.forEach(i => addToDo(i));
+      return;
+    }
+
+    if (e.target.classList.contains("uncompleted")){
+      items = items.filter(x => !x.isCompleted) 
+      items.forEach(i => addToDo(i));
+      return;
+    }
+
+    if (e.target.classList.contains("completed")){
+      items = items.filter(x => x.isCompleted) 
+      items.forEach(i => addToDo(i));
+      return;
+    }
+       
+   /*  if (e.target.classList.contains("all")) {
         for(let i=0; i<allToDos.length; i++) {
           allToDos[i].classList.remove("hide");
         }
@@ -184,5 +195,5 @@ toDoListDiv.addEventListener("click", e => {
             allToDos[i].classList.remove("hide");
           }
         }
-    }
+    } */
   }
