@@ -18,7 +18,7 @@ body {
   font-family: "Source Sans Pro";
   color: var(--highlight-color);
   font-weight: 300;
-  background:url("https://colorfully.eu/wp-content/uploads/2012/07/look-again-best-facebook-cover.jpg") no-repeat center;
+  background:url("https://images.freecreatives.com/wp-content/uploads/2015/03/21a75583eebde777577803534ad4d671.jpg") no-repeat center;
   /*url("http://www.trendycovers.com/covers/sunflower_facebook_cover_1348078288.jpg") */
   background-size: cover;
 }
@@ -55,8 +55,9 @@ body {
   width: 100%;
   padding: 3rem 0;
   margin: 0;
-  background: url("https://colorfully.eu/wp-content/uploads/2012/07/look-again-best-facebook-cover.jpg")
+  background: url("https://images.freecreatives.com/wp-content/uploads/2015/03/21a75583eebde777577803534ad4d671.jpg")
     no-repeat center;
+    
   background-size: cover;
 }
 

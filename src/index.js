@@ -17,10 +17,12 @@ function getId(element) {
   function displayText(boolean) {
     if (boolean === true) {
       const text = document.createElement('p');
+      text.classList.add("emptyText")
       document.querySelector(".toDos").insertAdjacentElement('afterbegin', text);
       text.innerHTML = "Yeah, nothing to do today";
     } else {
-      document.querySelector(".toDos p").remove();
+       let element = document.querySelector(".toDos .emptyText");
+       if (element) element.remove();
     }
   } 
 
@@ -47,7 +49,7 @@ function getId(element) {
   }
 
   function formattingDate(number) {
-    if (number < 10) {
+    if (number < 10) { 
       number = "0" + number;
       return number;
     }
@@ -108,7 +110,7 @@ toDoListDiv.addEventListener("click", e => {
           window.alert("The usefulness of a cup is in its emptiness (old chinese proverb). And the usefulness of a todo lies in its text! Please type something in the input field.");
       }
       else {
-        if(document.querySelector(".toDos p")) displayText(false);
+        displayText(false);
         let newItem = repo.createNewItem();
         newItem.text = newToDo.value;
         repo.addItem(newItem);
